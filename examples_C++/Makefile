@@ -1,5 +1,5 @@
 MOLE = ../mole_C++
-
+ARMA = /home/janani/armadillo-14.0.2/
 CXX ?= g++
 
 ifeq ($(DEBUG),1)

@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3 -fopenmp -DARMA_DONT_USE_WRAPPER -DARMA_USE_SUPERLU CMakeFiles/test1.dir/test1.cpp.o -o test1   -L/home/janani/armadillo-14.0.2/lib  -Wl,-rpath,/home/janani/armadillo-14.0.2/lib -lmole /home/janani/openblas/lib/libopenblas.a -larmadillo 

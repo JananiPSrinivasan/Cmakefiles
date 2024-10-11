@@ -1,10 +1,12 @@
 MOLE = ../mole_C++
-
+ARMA = /home/janani/armadillo-14.0.2/
+OPENBLAS_PATH = /home/janani/openblas
+SUPERLU_PATH = /home/janani/superlu
 CXX ?= g++
 
 INCPATH = -I$(MOLE)
-CXXFLAGS = -O3 -fopenmp -DARMA_DONT_USE_WRAPPER
-LIBS = -L$(MOLE) -lmole -lopenblas
+CXXFLAGS = -O3 -fopenmp -DARMA_DONT_USE_WRAPPER -DARMA_USE_SUPERLU
+LIBS = -L$(MOLE) -lmole -L$(OPENBLAS_PATH) -lopenblas -L$(SUPERLU_PATH) -lsuperlu
 
 ifdef ARMA
 INCPATH += -I. -I$(ARMA)/include
@@ -17,12 +19,6 @@ endif
 ifdef EIGEN
 CXXFLAGS += -DEIGEN
 INCPATH += -I$(EIGEN)
-else
-ifdef SUPERLU
-LIBS += -L$(SUPERLU)/lib -Wl,-rpath,$(SUPERLU)/lib -lsuperlu
-else
-LIBS += -lsuperlu
-endif
 endif
 
 all: test1 test2 test3 test4 test5 run
