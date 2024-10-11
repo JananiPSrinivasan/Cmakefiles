@@ -11,7 +11,7 @@ set(ARMA_PATH "/home/janani/armadillo-14.0.2/")
 
 
 
-include_directories(${ARMADILLO_PATH}/include )
+include_directories(${ARMA_PATH}/include )
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp")
 
