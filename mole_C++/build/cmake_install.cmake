@@ -1,4 +1,4 @@
-# Install script for directory: /home/janani/mole/mole_C++
+# Install script for directory: /home/oneapi/mole/Cmakefiles/mole_C++
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/janani/mole/mole_C++/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/oneapi/mole/Cmakefiles/mole_C++/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

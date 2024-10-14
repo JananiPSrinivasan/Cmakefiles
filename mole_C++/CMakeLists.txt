@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp")
 
 
-set(ARMA_PATH "/home/janani/armadillo-14.0.2/")
+set(ARMA_PATH "/home/oneapi/arma/armadillo-14.0.2/")
 
 
 
@@ -30,6 +30,6 @@ add_library(mole_static STATIC ${SOURCES})
 
 add_library(mole_shared SHARED ${SOURCES})
 
-set_target_properties(mole_static PROPERTIES OUTPUT_NAME "libmole_static")
-set_target_properties(mole_shared PROPERTIES OUTPUT_NAME "libmole_shared")
+set_target_properties(mole_static PROPERTIES OUTPUT_NAME "mole_static")
+set_target_properties(mole_shared PROPERTIES OUTPUT_NAME "mole_shared")
 

@@ -1,7 +1,7 @@
 MOLE = ../mole_C++
-ARMA = /home/janani/armadillo-14.0.2/
-OPENBLAS_PATH = /home/janani/openblas
-SUPERLU_PATH = /home/janani/superlu
+ARMA = /home/oneapi/arma/armadillo-14.0.2
+OPENBLAS_PATH = /home/oneapi/openblas/lib
+SUPERLU_PATH = /home/oneapi/superlu/superlu-master
 CXX ?= g++
 
 INCPATH = -I$(MOLE)

@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "liblibmole_static.a"
+  "libmole_static.a"
 )

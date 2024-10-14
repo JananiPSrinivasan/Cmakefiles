@@ -13,8 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mole_static.dir/robinbc.cpp.o.d"
   "CMakeFiles/mole_static.dir/utils.cpp.o"
   "CMakeFiles/mole_static.dir/utils.cpp.o.d"
-  "liblibmole_static.a"
-  "liblibmole_static.pdb"
+  "libmole_static.a"
+  "libmole_static.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

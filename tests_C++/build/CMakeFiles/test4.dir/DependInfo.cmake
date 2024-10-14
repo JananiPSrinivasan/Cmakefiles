@@ -8,15 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/janani/mole/tests_C++/test4.cpp" "CMakeFiles/test4.dir/test4.cpp.o" "gcc" "CMakeFiles/test4.dir/test4.cpp.o.d"
+  "/home/oneapi/mole/Cmakefiles/tests_C++/test4.cpp" "CMakeFiles/test4.dir/test4.cpp.o" "gcc" "CMakeFiles/test4.dir/test4.cpp.o.d"
   )
 
-# Targets to which this target links which contain Fortran sources.
-set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
-  )
-
-# Targets to which this target links which contain Fortran sources.
-set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

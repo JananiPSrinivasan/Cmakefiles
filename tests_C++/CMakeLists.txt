@@ -4,33 +4,29 @@ cmake_minimum_required(VERSION 3.10)
 project(mole_tests VERSION 1.0 LANGUAGES CXX)
 
 # Set C++ standard and flags
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -DARMA_DONT_USE_WRAPPER -DARMA_USE_SUPERLU")
 
 # Set paths for MOLE, Armadillo, OpenBLAS, and SuperLU
-set(MOLE_PATH "../mole_C++")
-set(ARMA_PATH "/home/janani/armadillo-14.0.2/")
-set(OPENBLAS_PATH "/home/janani/openblas")
-set(SUPERLU_PATH "/home/janani/superlu")
+set(MOLE_PATH "/home/oneapi/mole/Cmakefiles/mole_C++") 
+set(ARMA_PATH "/usr/include")
+set(OPENBLAS_PATH "/usr/lib/x86_64-linux-gnu")
+set(SUPERLU_PATH "/home/oneapi/superlu/superlu-master/build/SRC") 
+
 set(EIGEN_PATH "")
 
 # Include directories
 include_directories(${MOLE_PATH})
-include_directories(${ARMA_PATH}/include)
+include_directories(${ARMA_PATH})
 
-# Optionally include Eigen
-option(USE_EIGEN "Use Eigen library" OFF)
-if(USE_EIGEN AND EIGEN_PATH)
-    add_definitions(-DEIGEN)
-    include_directories(${EIGEN_PATH})
-endif()
-
-# Link libraries (MOLE, OpenBLAS, SuperLU, and Armadillo)
-set(LIBS mole)
-list(APPEND LIBS ${OPENBLAS_PATH}/lib/libopenblas.a)
-#list(APPEND LIBS ${SUPERLU_PATH}/lib/libsuperlu.a)
-list(APPEND LIBS ${ARMA_PATH}/lib/libarmadillo.so)
+# Link libraries
+set(LIBS)
+list(APPEND LIBS ${MOLE_PATH}/build/libmole_static.a)  # Include libmole.a
+list(APPEND LIBS ${OPENBLAS_PATH}/libopenblas.a)
+list(APPEND LIBS ${SUPERLU_PATH}/libsuperlu.a)
+list(APPEND LIBS /usr/lib/x86_64-linux-gnu/libarmadillo.so)
+list(APPEND LIBS /usr/lib/x86_64-linux-gnu/libgfortran.so.5) 
 
 # Add executable tests
 foreach(TEST_NUM RANGE 1 5)

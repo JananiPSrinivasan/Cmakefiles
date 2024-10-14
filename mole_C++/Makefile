@@ -1,6 +1,6 @@
 ifndef ARMA
 # Put here the path to Armadillo
-ARMA = /home/janani/armadillo-14.0.2/
+ARMA = /home/oneapi/arma/armadillo-14.0.2
 endif
 
 ifndef EIGEN

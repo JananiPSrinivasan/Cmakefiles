@@ -13,8 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mole_shared.dir/robinbc.cpp.o.d"
   "CMakeFiles/mole_shared.dir/utils.cpp.o"
   "CMakeFiles/mole_shared.dir/utils.cpp.o.d"
-  "liblibmole_shared.pdb"
-  "liblibmole_shared.so"
+  "libmole_shared.pdb"
+  "libmole_shared.so"
 )
 
 # Per-language clean rules from dependency scanning.
