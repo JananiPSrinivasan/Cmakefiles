@@ -8,11 +8,60 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -DARMA_DONT_USE_WRAPPER -DARMA_USE_SUPERLU")
 
-# Set paths for MOLE, Armadillo, OpenBLAS, and SuperLU
-set(MOLE_PATH "/home/oneapi/mole/Cmakefiles/mole_C++") 
+#
+# Set paths for MOLE
+message (WARNING "Change the MOLE_PATH in CMakefile to inclde Mole Libraries")
+set(MOLE_PATH "/home/oneapi/mole/Cmakefiles/mole_C++")
+
+
+
+#Finding Armadillo and setting ARMA_PATH
+find_package(Armadillo REQUIRED)
+if(NOT Armadillo_FOUND)
+    message(FATAL_ERROR "Armadillo not found. Please install libarmadillo-dev.")
+endif()
+message (WARNING "Change the armadillo path in ARMA_PATH if not installed in the default location") 
 set(ARMA_PATH "/usr/include")
+
+
+
+
+#Finding Openblas and setting OPENBLAS_PATH
+find_library(OPENBLAS NAMES openblas blas PATHS "/usr/lib/x86_64-linux-gnu")
+if(NOT OPENBLAS)
+    message(FATAL_ERROR "Openblas not found. Please install libopenblas-dev.")
+else()
+    message(STATUS "Openblas found at ${OPENBLAS}")
+endif()
+message (WARNING "Change the openblas path in OPENBLAS_PATH if not installed in the default location")
 set(OPENBLAS_PATH "/usr/lib/x86_64-linux-gnu")
+
+
+
+
+#Finding SUPERLU and setting SUPERLU_PATH
+find_library(SUPERLU NAMES superlu superlu-master PATHS "/home/oneapi/superlu/superlu-master/build/SRC")
+if(NOT SUPERLU)
+    message(FATAL_ERROR "SuperLu not found. Please install SuperLu.")
+else()
+    message(STATUS "Openblas found at ${SUPERLU}")
+endif()
+message (WARNING "Change the superlu path in SUPERLU_PATH if not installed in the default location")
 set(SUPERLU_PATH "/home/oneapi/superlu/superlu-master/build/SRC") 
+
+
+
+
+
+find_path(EIGEN eigen3/Eigen PATHS "/usr/include" "/usr/local/include")
+if(NOT EIGEN)
+    message(FATAL_ERROR "Eigen not found. Please install libeigen3-dev.")
+else()
+    message(STATUS "Eigen found at ${EIGEN}")
+endif()
+message (WARNING "Change the eigen path in EIGEN_PATH if not installed in the default location")
+set (EIGEN_PATH "/usr/include")
+
 
 
 # Include directories

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -Dmole_shared_EXPORTS
 
-CXX_INCLUDES = -I/home/oneapi/arma/armadillo-14.0.2/include
+CXX_INCLUDES = -I/usr/include/include -I/usr/include/eigen3
 
 CXX_FLAGS =  -O3 -fopenmp -O3 -fopenmp -fPIC -std=gnu++11
 
