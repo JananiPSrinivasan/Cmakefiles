@@ -1,9 +1,10 @@
 CMakeFiles/test2.dir/test2.cpp.o: \
  /home/oneapi/mole/Cmakefiles/tests_C++/test2.cpp \
- /usr/include/stdc-predef.h /home/oneapi/mole/Cmakefiles/mole_C++/mole.h \
- /home/oneapi/mole/Cmakefiles/mole_C++/divergence.h \
- /home/oneapi/mole/Cmakefiles/mole_C++/utils.h /usr/include/armadillo \
- /usr/include/armadillo_bits/config.hpp \
+ /usr/include/stdc-predef.h \
+ /home/oneapi/mole/Cmakefiles/tests_C++/../mole_C++/mole.h \
+ /home/oneapi/mole/Cmakefiles/tests_C++/../mole_C++/divergence.h \
+ /home/oneapi/mole/Cmakefiles/tests_C++/../mole_C++/utils.h \
+ /usr/include/armadillo /usr/include/armadillo_bits/config.hpp \
  /usr/include/armadillo_bits/compiler_check.hpp \
  /usr/include/c++/11/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -863,9 +864,9 @@ CMakeFiles/test2.dir/test2.cpp.o: \
  /usr/include/armadillo_bits/newarp_UpperHessenbergQR_meat.hpp \
  /usr/include/armadillo_bits/compiler_setup_post.hpp \
  /usr/include/c++/11/cassert /usr/include/assert.h \
- /home/oneapi/mole/Cmakefiles/mole_C++/gradient.h \
- /home/oneapi/mole/Cmakefiles/mole_C++/interpol.h \
- /home/oneapi/mole/Cmakefiles/mole_C++/laplacian.h \
- /home/oneapi/mole/Cmakefiles/mole_C++/mixedbc.h \
- /home/oneapi/mole/Cmakefiles/mole_C++/operators.h \
- /home/oneapi/mole/Cmakefiles/mole_C++/robinbc.h
+ /home/oneapi/mole/Cmakefiles/tests_C++/../mole_C++/gradient.h \
+ /home/oneapi/mole/Cmakefiles/tests_C++/../mole_C++/interpol.h \
+ /home/oneapi/mole/Cmakefiles/tests_C++/../mole_C++/laplacian.h \
+ /home/oneapi/mole/Cmakefiles/tests_C++/../mole_C++/mixedbc.h \
+ /home/oneapi/mole/Cmakefiles/tests_C++/../mole_C++/operators.h \
+ /home/oneapi/mole/Cmakefiles/tests_C++/../mole_C++/robinbc.h

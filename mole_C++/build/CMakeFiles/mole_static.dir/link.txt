@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmole_static.a CMakeFiles/mole_static.dir/utils.cpp.o CMakeFiles/mole_static.dir/divergence.cpp.o CMakeFiles/mole_static.dir/gradient.cpp.o CMakeFiles/mole_static.dir/laplacian.cpp.o CMakeFiles/mole_static.dir/interpol.cpp.o CMakeFiles/mole_static.dir/mixedbc.cpp.o CMakeFiles/mole_static.dir/robinbc.cpp.o
-/usr/bin/ranlib libmole_static.a

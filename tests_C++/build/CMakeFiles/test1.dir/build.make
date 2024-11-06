@@ -92,11 +92,10 @@ test1_EXTERNAL_OBJECTS =
 
 test1: CMakeFiles/test1.dir/test1.cpp.o
 test1: CMakeFiles/test1.dir/build.make
-test1: /home/oneapi/mole/Cmakefiles/mole_C++/build/libmole_static.a
-test1: /usr/lib/x86_64-linux-gnu/libopenblas.a
-test1: /home/oneapi/superlu/superlu-master/build/SRC/libsuperlu.a
+test1: mole_build/libmole_C++.a
 test1: /usr/lib/x86_64-linux-gnu/libarmadillo.so
-test1: /usr/lib/x86_64-linux-gnu/libgfortran.so.5
+test1: /opt/OpenBLAS/lib/libopenblas.so
+test1: /usr/local/lib/libsuperlu.a
 test1: CMakeFiles/test1.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/oneapi/mole/Cmakefiles/tests_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test1.dir/link.txt --verbose=$(VERBOSE)

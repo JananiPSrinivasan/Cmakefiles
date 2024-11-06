@@ -71,11 +71,11 @@ CMakeFiles/run: test2
 CMakeFiles/run: test3
 CMakeFiles/run: test4
 CMakeFiles/run: test5
-	LD_LIBRARY_PATH=/home/oneapi/mole/Cmakefiles/mole_C++ ./test1
-	LD_LIBRARY_PATH=/home/oneapi/mole/Cmakefiles/mole_C++ ./test2
-	LD_LIBRARY_PATH=/home/oneapi/mole/Cmakefiles/mole_C++ ./test3
-	LD_LIBRARY_PATH=/home/oneapi/mole/Cmakefiles/mole_C++ ./test4
-	LD_LIBRARY_PATH=/home/oneapi/mole/Cmakefiles/mole_C++ ./test5
+	/usr/bin/cmake -E env LD_LIBRARY_PATH=/home/oneapi/mole/Cmakefiles/tests_C++/build/mole_C++ ./test1
+	/usr/bin/cmake -E env LD_LIBRARY_PATH=/home/oneapi/mole/Cmakefiles/tests_C++/build/mole_C++ ./test2
+	/usr/bin/cmake -E env LD_LIBRARY_PATH=/home/oneapi/mole/Cmakefiles/tests_C++/build/mole_C++ ./test3
+	/usr/bin/cmake -E env LD_LIBRARY_PATH=/home/oneapi/mole/Cmakefiles/tests_C++/build/mole_C++ ./test4
+	/usr/bin/cmake -E env LD_LIBRARY_PATH=/home/oneapi/mole/Cmakefiles/tests_C++/build/mole_C++ ./test5
 
 run: CMakeFiles/run
 run: CMakeFiles/run.dir/build.make
