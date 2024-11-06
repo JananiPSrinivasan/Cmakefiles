@@ -92,11 +92,12 @@ elliptic2D_EXTERNAL_OBJECTS =
 
 elliptic2D: CMakeFiles/elliptic2D.dir/elliptic2D.cpp.o
 elliptic2D: CMakeFiles/elliptic2D.dir/build.make
-elliptic2D: /home/oneapi/mole/Cmakefiles/mole_C++/build/libmole_static.a
-elliptic2D: /usr/lib/x86_64-linux-gnu/libopenblas.a
-elliptic2D: /home/oneapi/superlu/superlu-master/build/SRC/libsuperlu.a
 elliptic2D: /usr/lib/x86_64-linux-gnu/libarmadillo.so
+elliptic2D: /opt/OpenBLAS/lib/libopenblas.so
+elliptic2D: /usr/local/lib/libsuperlu.a
+elliptic2D: mole_build/libmole_C++.a
 elliptic2D: /usr/lib/x86_64-linux-gnu/libgfortran.so.5
+elliptic2D: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 elliptic2D: CMakeFiles/elliptic2D.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/oneapi/mole/Cmakefiles/examples_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable elliptic2D"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/elliptic2D.dir/link.txt --verbose=$(VERBOSE)

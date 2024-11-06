@@ -1,79 +1,61 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project definition
-project(mole_tests VERSION 1.0 LANGUAGES CXX)
+project(tests_C++ VERSION 1.0 LANGUAGES CXX)
 
 # Set C++ standard and flags
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -DARMA_DONT_USE_WRAPPER -DARMA_USE_SUPERLU")
 
-#
-# Set paths for MOLE
-message (WARNING "Change the MOLE_PATH in CMakefile to inclde Mole Libraries")
-set(MOLE_PATH "/home/oneapi/mole/Cmakefiles/mole_C++")
+# Add mole library as a subdirectory
+add_subdirectory("../mole_C++" mole_build)
+set(MOLE_PATH "../mole_C++" mole_build) 
+
+# Required Libraries
+find_package(Armadillo 12.6.6 REQUIRED)
+find_package(Eigen3 3.3.7 REQUIRED)
+find_package(OpenBLAS 0.3.8 REQUIRED)
 
 
+# Find the SuperLU headers and library manually
+find_path(SUPERLU_INCLUDE_DIR slu_ddefs.h PATHS /usr/local/include /usr/include)
+find_library(SUPERLU_LIBRARY superlu PATHS /usr/local/lib /usr/lib)
 
-#Finding Armadillo and setting ARMA_PATH
-find_package(Armadillo REQUIRED)
-if(NOT Armadillo_FOUND)
-    message(FATAL_ERROR "Armadillo not found. Please install libarmadillo-dev.")
+# If SuperLU is not found, download and build it with ExternalProject
+if (NOT SUPERLU_INCLUDE_DIR OR NOT SUPERLU_LIBRARY)
+    include(ExternalProject)
+    message(STATUS "SuperLU not found. Downloading and installing in /usr/local.")
+
+    ExternalProject_Add(superlu
+        URL https://github.com/xiaoyeli/superlu/archive/refs/tags/v5.2.1.tar.gz
+        PREFIX ${CMAKE_BINARY_DIR}/superlu
+        CONFIGURE_COMMAND ""
+        BUILD_COMMAND make lib
+        INSTALL_COMMAND sudo make install PREFIX=/usr/local
+        BUILD_IN_SOURCE 1
+    )
+
+    # Specify where to find the installed SuperLU library and headers
+    set(SUPERLU_INCLUDE_DIR /usr/local/include)
+    set(SUPERLU_LIBRARIES /usr/local/lib/libsuperlu.a)
+
+    # Ensure targets that need SuperLU depend on this ExternalProject
+    add_dependencies(tests_C++ superlu)
 endif()
-message (WARNING "Change the armadillo path in ARMA_PATH if not installed in the default location") 
-set(ARMA_PATH "/usr/include")
+
+# Include SuperLU in the include directories
+include_directories(${SUPERLU_INCLUDE_DIR})
+set(SUPERLU_LIBRARIES ${SUPERLU_LIBRARY})
 
 
 
-
-#Finding Openblas and setting OPENBLAS_PATH
-find_library(OPENBLAS NAMES openblas blas PATHS "/usr/lib/x86_64-linux-gnu")
-if(NOT OPENBLAS)
-    message(FATAL_ERROR "Openblas not found. Please install libopenblas-dev.")
-else()
-    message(STATUS "Openblas found at ${OPENBLAS}")
-endif()
-message (WARNING "Change the openblas path in OPENBLAS_PATH if not installed in the default location")
-set(OPENBLAS_PATH "/usr/lib/x86_64-linux-gnu")
-
-
-
-
-#Finding SUPERLU and setting SUPERLU_PATH
-find_library(SUPERLU NAMES superlu superlu-master PATHS "/home/oneapi/superlu/superlu-master/build/SRC")
-if(NOT SUPERLU)
-    message(FATAL_ERROR "SuperLu not found. Please install SuperLu.")
-else()
-    message(STATUS "Openblas found at ${SUPERLU}")
-endif()
-message (WARNING "Change the superlu path in SUPERLU_PATH if not installed in the default location")
-set(SUPERLU_PATH "/home/oneapi/superlu/superlu-master/build/SRC") 
-
-
-
-
-
-find_path(EIGEN eigen3/Eigen PATHS "/usr/include" "/usr/local/include")
-if(NOT EIGEN)
-    message(FATAL_ERROR "Eigen not found. Please install libeigen3-dev.")
-else()
-    message(STATUS "Eigen found at ${EIGEN}")
-endif()
-message (WARNING "Change the eigen path in EIGEN_PATH if not installed in the default location")
-set (EIGEN_PATH "/usr/include")
-
-
-
-# Include directories
-include_directories(${MOLE_PATH})
-include_directories(${ARMA_PATH})
+# Include directories for all libraries
+include_directories(${ARMADILLO_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIRS} ${OpenBLAS_INCLUDE_DIRS} ${SUPERLU_INCLUDE_DIR} ${MOLE_PATH}/include)
 
 # Link libraries
 set(LIBS)
-list(APPEND LIBS ${MOLE_PATH}/build/libmole_static.a)  # Include libmole.a
-list(APPEND LIBS ${OPENBLAS_PATH}/libopenblas.a)
-list(APPEND LIBS ${SUPERLU_PATH}/libsuperlu.a)
-list(APPEND LIBS /usr/lib/x86_64-linux-gnu/libarmadillo.so)
+list(APPEND LIBS ${ARMADILLO_LIBRARIES} ${OpenBLAS_LIBRARIES} ${SUPERLU_LIBRARIES} mole_C++)  # Include libmole.a
 list(APPEND LIBS /usr/lib/x86_64-linux-gnu/libgfortran.so.5) 
 
 

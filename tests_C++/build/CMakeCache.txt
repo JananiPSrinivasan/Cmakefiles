@@ -217,7 +217,7 @@ SUPERLU_INCLUDE_DIR:PATH=/usr/local/include
 SUPERLU_LIBRARY:FILEPATH=/usr/local/lib/libsuperlu.a
 
 //Dependencies for the target
-mole_C++_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libarmadillo.so;general;/opt/OpenBLAS/lib/libopenblas.so;general;/usr/local/lib/libsuperlu.a;
+mole_C++_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libarmadillo.so;
 
 //Value Computed by CMake
 mole_project_BINARY_DIR:STATIC=/home/oneapi/mole/Cmakefiles/tests_C++/build/mole_build

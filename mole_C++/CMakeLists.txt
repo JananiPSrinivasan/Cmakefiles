@@ -7,34 +7,19 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp")
 
 
 # Required Libraries
-find_package(Armadillo 12.6.6 REQUIRED)
-find_package(Eigen3 3.3.7 REQUIRED)
-find_package(OpenBLAS 0.3.8 REQUIRED)
-
-# Find the SuperLU headers
-find_path(SUPERLU_INCLUDE_DIR
-    NAMES slu_ddefs.h
-    PATHS "/home/oneapi/superlu/superlu-master/build/SRC" "/usr/local/include" "/usr/include"
-    NO_DEFAULT_PATH
-)
-
-# Find the SuperLU library
-find_library(SUPERLU_LIBRARY
-    NAMES superlu
-    PATHS "/home/oneapi/superlu/superlu-master/build/lib" "/usr/local/lib" "/usr/lib"
-    NO_DEFAULT_PATH
-)
-
-# Check if both the library and include directory were found
-if(NOT SUPERLU_INCLUDE_DIR OR NOT SUPERLU_LIBRARY)
-    message(FATAL_ERROR "SuperLU not found. Please make sure SuperLU is installed.")
+# Armadillo
+find_package(Armadillo 12.6.6 QUIET)
+if (NOT Armadillo_FOUND)
+    message(STATUS "Armadillo not found. Downloading and building it.")
+    ExternalProject_Add(armadillo
+        URL https://gitlab.com/conradsnicta/armadillo-code/-/archive/12.6.6/armadillo-code-12.6.6.tar.gz
+        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${LOCAL_INSTALL_DIR}
+    )
+    set(ARMADILLO_INCLUDE_DIRS ${LOCAL_INSTALL_DIR}/include)
+    set(ARMADILLO_LIBRARIES ${LOCAL_INSTALL_DIR}/lib/libarmadillo.so)
 else()
-    message(STATUS "SuperLU found at ${SUPERLU_INCLUDE_DIR} and ${SUPERLU_LIBRARY}")
+    message(STATUS "Armadillo found.")
 endif()
-
-# Link to the SuperLU library
-include_directories(${SUPERLU_INCLUDE_DIR})
-set(SUPERLU_LIBRARIES ${SUPERLU_LIBRARY})
 
 set(SOURCES utils.cpp divergence.cpp gradient.cpp laplacian.cpp interpol.cpp mixedbc.cpp robinbc.cpp)
 

@@ -92,11 +92,12 @@ elliptic1D_EXTERNAL_OBJECTS =
 
 elliptic1D: CMakeFiles/elliptic1D.dir/elliptic1D.cpp.o
 elliptic1D: CMakeFiles/elliptic1D.dir/build.make
-elliptic1D: /home/oneapi/mole/Cmakefiles/mole_C++/build/libmole_static.a
-elliptic1D: /usr/lib/x86_64-linux-gnu/libopenblas.a
-elliptic1D: /home/oneapi/superlu/superlu-master/build/SRC/libsuperlu.a
 elliptic1D: /usr/lib/x86_64-linux-gnu/libarmadillo.so
+elliptic1D: /opt/OpenBLAS/lib/libopenblas.so
+elliptic1D: /usr/local/lib/libsuperlu.a
+elliptic1D: mole_build/libmole_C++.a
 elliptic1D: /usr/lib/x86_64-linux-gnu/libgfortran.so.5
+elliptic1D: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 elliptic1D: CMakeFiles/elliptic1D.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/oneapi/mole/Cmakefiles/examples_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable elliptic1D"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/elliptic1D.dir/link.txt --verbose=$(VERBOSE)

@@ -12,11 +12,49 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -DARMA_DONT_USE_WRAPPER -DA
 add_subdirectory("../mole_C++" mole_build)
 set(MOLE_PATH "../mole_C++" mole_build) 
 
-# Required Libraries
-find_package(Armadillo 12.6.6 REQUIRED)
-find_package(Eigen3 3.3.7 REQUIRED)
-find_package(OpenBLAS 0.3.8 REQUIRED)
+# Set installation prefix for local installation of dependencies
+set(LOCAL_INSTALL_DIR ${CMAKE_BINARY_DIR}/external)
 
+# Armadillo
+find_package(Armadillo 12.6.6 QUIET)
+if (NOT Armadillo_FOUND)
+    message(STATUS "Armadillo not found. Downloading and building it.")
+    ExternalProject_Add(armadillo
+        URL https://gitlab.com/conradsnicta/armadillo-code/-/archive/12.6.6/armadillo-code-12.6.6.tar.gz
+        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${LOCAL_INSTALL_DIR}
+    )
+    set(ARMADILLO_INCLUDE_DIRS ${LOCAL_INSTALL_DIR}/include)
+    set(ARMADILLO_LIBRARIES ${LOCAL_INSTALL_DIR}/lib/libarmadillo.so)
+else()
+    message(STATUS "Armadillo found.")
+endif()
+
+# Eigen
+find_package(Eigen3 3.3.7 QUIET)
+if (NOT EIGEN3_FOUND)
+    message(STATUS "Eigen3 not found. Downloading and building it.")
+    ExternalProject_Add(eigen
+        URL https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.gz
+        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${LOCAL_INSTALL_DIR}
+    )
+    set(EIGEN3_INCLUDE_DIRS ${LOCAL_INSTALL_DIR}/include/eigen3)
+else()
+    message(STATUS "Eigen3 found.")
+endif()
+
+# OpenBLAS
+find_package(OpenBLAS 0.3.8 QUIET)
+if (NOT OpenBLAS_FOUND)
+    message(STATUS "OpenBLAS not found. Downloading and building it.")
+    ExternalProject_Add(openblas
+        URL https://github.com/xianyi/OpenBLAS/archive/v0.3.8.tar.gz
+        BUILD_IN_SOURCE 1
+        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${LOCAL_INSTALL_DIR}
+    )
+    set(OpenBLAS_LIBRARIES ${LOCAL_INSTALL_DIR}/lib/libopenblas.so)
+else()
+    message(STATUS "OpenBLAS found.")
+endif()
 
 # Find the SuperLU headers and library manually
 find_path(SUPERLU_INCLUDE_DIR slu_ddefs.h PATHS /usr/local/include /usr/include)

@@ -92,11 +92,12 @@ schrodinger1D_EXTERNAL_OBJECTS =
 
 schrodinger1D: CMakeFiles/schrodinger1D.dir/schrodinger1D.cpp.o
 schrodinger1D: CMakeFiles/schrodinger1D.dir/build.make
-schrodinger1D: /home/oneapi/mole/Cmakefiles/mole_C++/build/libmole_static.a
-schrodinger1D: /usr/lib/x86_64-linux-gnu/libopenblas.a
-schrodinger1D: /home/oneapi/superlu/superlu-master/build/SRC/libsuperlu.a
 schrodinger1D: /usr/lib/x86_64-linux-gnu/libarmadillo.so
+schrodinger1D: /opt/OpenBLAS/lib/libopenblas.so
+schrodinger1D: /usr/local/lib/libsuperlu.a
+schrodinger1D: mole_build/libmole_C++.a
 schrodinger1D: /usr/lib/x86_64-linux-gnu/libgfortran.so.5
+schrodinger1D: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 schrodinger1D: CMakeFiles/schrodinger1D.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/oneapi/mole/Cmakefiles/examples_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable schrodinger1D"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/schrodinger1D.dir/link.txt --verbose=$(VERBOSE)

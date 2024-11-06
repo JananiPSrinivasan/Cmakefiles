@@ -92,11 +92,12 @@ transport1D_EXTERNAL_OBJECTS =
 
 transport1D: CMakeFiles/transport1D.dir/transport1D.cpp.o
 transport1D: CMakeFiles/transport1D.dir/build.make
-transport1D: /home/oneapi/mole/Cmakefiles/mole_C++/build/libmole_static.a
-transport1D: /usr/lib/x86_64-linux-gnu/libopenblas.a
-transport1D: /home/oneapi/superlu/superlu-master/build/SRC/libsuperlu.a
 transport1D: /usr/lib/x86_64-linux-gnu/libarmadillo.so
+transport1D: /opt/OpenBLAS/lib/libopenblas.so
+transport1D: /usr/local/lib/libsuperlu.a
+transport1D: mole_build/libmole_C++.a
 transport1D: /usr/lib/x86_64-linux-gnu/libgfortran.so.5
+transport1D: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 transport1D: CMakeFiles/transport1D.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/oneapi/mole/Cmakefiles/examples_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable transport1D"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/transport1D.dir/link.txt --verbose=$(VERBOSE)
