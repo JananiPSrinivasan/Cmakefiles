@@ -11,7 +11,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -DARMA_DONT_USE_WRAPPER -DA
 #
 # Set paths for MOLE
 message (WARNING "Change the MOLE_PATH in CMakefile to inclde Mole Libraries")
-set(MOLE_PATH "/home/oneapi/mole/Cmakefiles/mole_C++")
+add_subdirectory("../mole_C++" mole_build)
+set(MOLE_PATH "../mole_C++" mole_build) 
+
 
 
 
@@ -65,12 +67,12 @@ set (EIGEN_PATH "/usr/include")
 
 
 # Include directories
-include_directories(${MOLE_PATH})
+include_directories(${MOLE_PATH}/include)
 include_directories(${ARMA_PATH})
 
 # Link libraries
 set(LIBS)
-list(APPEND LIBS ${MOLE_PATH}/build/libmole_static.a)  # Include libmole.a
+list(APPEND LIBS mole_C++)  # Include libmole.a
 list(APPEND LIBS ${OPENBLAS_PATH}/libopenblas.a)
 list(APPEND LIBS ${SUPERLU_PATH}/libsuperlu.a)
 list(APPEND LIBS /usr/lib/x86_64-linux-gnu/libarmadillo.so)
