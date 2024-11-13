@@ -18,7 +18,7 @@ set(MOLE_PATH "../mole_C++" mole_build)
 
 
 #Finding Armadillo and setting ARMA_PATH
-find_package(Armadillo REQUIRED)
+find_package(Armadillo 9.800.4 REQUIRED)
 if(NOT Armadillo_FOUND)
     message(FATAL_ERROR "Armadillo not found. Please install libarmadillo-dev.")
 endif()
